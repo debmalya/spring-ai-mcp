@@ -4,3 +4,14 @@ spring:
   ai:
     openai:
       api-key: ${OPENAI_API_KEY}
+    mcp:
+      client:
+        stdio:
+          servers-configuration: classpath:mcp-servers.json
+          connections:
+            filesystem: # #1 MCP Client Name 'filesystem'
+              command: 'npx' # #2 MCP server command
+              args: # #3 arguments
+                - '-y'
+                - '@modelcontextprotocol/server-filesystem'
+                - '/Users/habuma/mcp-playground' # Change according to your configuration
